@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
 import static java.lang.Character.isLowerCase;
 import static java.lang.Character.isUpperCase;
 import static java.lang.Character.toLowerCase;
@@ -53,6 +57,20 @@ public class ROT13  {
         String rotate = s.substring(index) + s.substring(0, index);
 
         return rotate;
+    }
+
+    public void reader(){
+
+        try{
+            Scanner fileIn = new Scanner(new File("/Users/andy/Desktop/Projects/SimpleCrypt/sonnet18.txt"));
+
+            while (fileIn.hasNext()){
+                String lineIn = fileIn.nextLine();
+                encrypt(lineIn);
+            }
+        }catch(IOException e){
+            System.out.println("File not found");
+        }
     }
 
 }
