@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 import static java.lang.Character.isLowerCase;
@@ -63,11 +64,20 @@ public class ROT13  {
 
         try{
             Scanner fileIn = new Scanner(new File("/Users/andy/Desktop/Projects/SimpleCrypt/sonnet18.txt"));
+            PrintWriter filePrint = new PrintWriter(new File("/Users/andy/Desktop/Projects/SimpleCrypt/sonnet18.ech"));
+            PrintWriter filePrint2 = new PrintWriter(new File("/Users/andy/Desktop/Projects/SimpleCrypt/sonnet18.denc"));
 
             while (fileIn.hasNext()){
                 String lineIn = fileIn.nextLine();
-                encrypt(lineIn);
+                String test = encrypt(lineIn);
+                //String test2 = decrypt(lineIn);
+
+                filePrint.println(test);
+                //filePrint2.println(test2);
+
+
             }
+            filePrint.close();
         }catch(IOException e){
             System.out.println("File not found");
         }
